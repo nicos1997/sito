@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="icon" href="../../../../favicon.ico"> -->
+
+    <title>mY cHAT</title>
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<!-- Icons-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    /* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  color: #5a5a5a;
+}
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  margin-bottom: 4rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 32rem;
+  background-color: #777;
+}
+.carousel-item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 32rem;
+}
+
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: 400;
+}
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -.05rem;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 40em) {
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+
+}
+
+}
+
+/* NICOS
+-------------------------------------------------*/
+body {
+    position: relative;
+    background-image: url("sfondo1.jpg");
+    background-repeat: no-repeat;
+    background-size:100% 100vh;
+}
+#banda{
+    opacity: 0.3;
+}
+#banda .normale{
+    opacity: 1;
+}
+header{
+  position: fixed;
+}
+/* chatbox{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+} */
+/*chat box
+--------------------------------------------------*/
+.mytext{
+    border:0;padding:10px;background:whitesmoke;
+}
+.text{
+    width:75%;display:flex;flex-direction:column;
+}
+.text > p:first-of-type{
+    width:100%;margin-top:0;margin-bottom:auto;line-height: 13px;font-size: 12px;
+}
+.text > p:last-of-type{
+    width:100%;text-align:right;color:silver;margin-bottom:-7px;margin-top:auto;
+}
+.text-l{
+    float:left;padding-right:10px;
+}        
+.text-r{
+    float:right;padding-left:10px;
+}
+.avatar{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:25%;
+    float:left;
+    padding-right:10px;
+}
+.macro{
+    margin-top:5px;width:100%;border-radius:5px;padding:5px;display:flex;
+}
+.msj-rta{
+    float:right;background:whitesmoke;
+}
+.msj{
+    float:left;background:white;
+}
+.frame{
+    background:#e0e0de;
+    opacity: 0.9;
+    height:700px;
+    width:80%;
+    overflow:hidden;
+    padding:0;
+}
+.frame > div:last-of-type{
+    position:absolute;bottom:0;width:100%;display:flex;
+}
+body > div > div > div:nth-child(2) > span{
+    background: whitesmoke;padding: 10px;font-size: 21px;border-radius: 50%;
+}
+body > div > div > div.msj-rta.macro{
+    margin:auto;margin-left:1%;
+}
+ul {
+    width:100%;
+    list-style-type: none;
+    padding:18px;
+    position:absolute;
+    bottom:47px;
+    display:flex;
+    flex-direction: column;
+    top:0;
+    overflow-y:scroll;
+}
+.msj:before{
+    width: 0;
+    height: 0;
+    content:"";
+    top:-5px;
+    left:-14px;
+    position:relative;
+    border-style: solid;
+    border-width: 0 13px 13px 0;
+    border-color: transparent #ffffff transparent transparent;            
+}
+.msj-rta:after{
+    width: 0;
+    height: 0;
+    content:"";
+    top:-5px;
+    left:14px;
+    position:relative;
+    border-style: solid;
+    border-width: 13px 13px 0 0;
+    border-color: whitesmoke transparent transparent transparent;           
+}  
+input:focus{
+    outline: none;
+}        
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #d4d4d4;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: #d4d4d4;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: #d4d4d4;
+}
+:-moz-placeholder { /* Firefox 18- */
+    color: #d4d4d4;
+}  
+</style>
+<script type="text/javascript" src="../jquery.js"></script>
+<script type="text/javascript">
+var ws = new WebSocket("ws://192.168.1.128:8080");
+var cont_mess=0;
+var nome_utente;
+var server_message;
+
+$(document).ready(function(){
+    //ottenimento valore del cookie
+    var nome_utente = decodeURIComponent(document.cookie).split(';')[0].split('=')[1];
+    //alert(nome_utente);
+    if(nome_utente==null||nome_utente==""){
+        alert("non hai accesso ai dati");
+        document.location.assign("/");
+    }
+
+  $(".logout").click(function(){
+       logout= {
+		   "client_logout" : 
+		   {
+			   "nome_utente": nome_utente
+       }
+    };
+    ws.send(JSON.stringify(logout));
+  });
+  setInterval(function(){
+          //alert("cont_mess:"+cont_mess);
+          chat2={
+             "client_mess_agg":{
+               "ver_id":nome_utente,
+               "id_mess":cont_mess+1
+             }
+            };
+            
+          
+          ws.send(JSON.stringify(chat2));
+         },500);
+ws.onmessage = function(e){
+	        server_message = JSON.parse(e.data);
+        
+          if(server_message.server_logout!=null){
+            nome_utente="";
+            document.cookie = "ver_id=";
+            document.location.assign("/");
+          }
+          else if(server_message.rifiuto!=null){
+            alert("Errore nel login");
+          }
+          else if(server_message.server_lista_mess!=null){
+            //ricevimento messaggi
+            cont=0;
+            //console.log("mess:"+server_message)
+             for(data in server_message.server_lista_mess)
+             {
+               if(server_message.server_lista_mess[data]!=null){
+               //alert("ricevuto:"+server_message.server_lista_mess[data].mess.toString());
+               //$("#chat").text(server_message.server_lista_mess[data].nome_utente+": -->"+server_message.server_lista_mess[data].mess);
+               if(server_message.server_lista_mess[data].nome_utente==nome_utente)
+               insertChat("me", server_message.server_lista_mess[data].mess,0);
+               else
+               insertChat(server_message.server_lista_mess[data].nome_utente, server_message.server_lista_mess[data].mess,0);
+               cont_mess++;
+               cont++;
+               }
+             }
+          }
+        };
+  //chat box
+/*  var me = {};
+me.avatar = "https://lh6.googleusercontent.com/-lr2nyjhhjXw/AAAAAAAAAAI/AAAAAAAARmE/MdtfUmC0M4s/photo.jpg?sz=48";
+
+var you = {};
+you.avatar = "https://a11.t26.net/taringa/avatares/9/1/2/F/7/8/Demon_King1/48x48_5C5.jpg";*/
+
+/*function formatAMPM(date) {
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+    return strTime;
+}    */        
+
+//-- No use time. It is a javaScript effect.
+function insertChat(who, text, time){
+    if (time === undefined){
+        time = 0;
+    }
+    var control = "";
+    /*var date = formatAMPM(new Date());*/
+    
+    if (who == "me"){
+        control = '<li style="width:95%">' +
+                        '<div class="msj macro">' +
+                        'Me' +
+                            '<div class="text text-l">' +
+                                '<h3>'+ text +'</h3>' +
+                                '<p><small>'+'</small></p>' +
+                            '</div>' +
+                        '</div>' +
+                    '</li>';                    
+    }else{
+        control = '<li style="width:95%;">' +
+                        '<div class="msj-rta macro">' +
+                            '<div class="text text-r">' +
+                                '<p>'+text+'</p>' +
+                                '<p><small>'+'</small></p>' +
+                            '</div>' +
+                        '<div class="avatar" style="padding:0px 0px 0px 10px !important">'+who+'</div>' +                                
+                  '</li>';
+    }
+    setTimeout(
+        function(){                        
+            $("#chat").append(control).scrollTop($("ul").prop('scrollHeight'));
+        }, time);
+    
+}
+
+function resetChat(){
+    $("ul").empty();
+}
+
+$(".mytext").on("keydown", function(e){
+    if (e.which == 13){
+        var text = $(this).val();
+        if (text !== ""){
+            //insertChat("me", text);              
+            $(this).val('');
+            //----invio dati al server----
+            mess={
+              "client_mess":{
+                "ver_id":nome_utente,
+                "mess":text
+              }
+            };
+          ws.send(JSON.stringify(mess));
+        }
+    }
+});
+
+$('body > div > div > div:nth-child(2) > span').click(function(){
+    $(".mytext").trigger({type: 'keydown', which: 13, keyCode: 13});
+})
+
+//-- Clear Chat
+resetChat();
+});
+</script>
+  </head>
+  <body onUnload="document.cookie = 'ver_id=;'">
+
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#"><img class="" src="../logo0.png" alt="Logo"></a>
+        <button class="navbar-toggler logout" type="button" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          
+          <form class="form-inline mt-2 mt-md-0">
+            <button type="button" class="btn btn-outline-success my-2 my-sm-0 logout">Logout</button>
+          </form>
+        </div>
+      </nav>
+    </header>
+    <div class="col frame"style="width: 80%;margin-left:10%;margin-top:100px" id="chatbox">
+      <ul id="chat"></ul>
+      <div>
+          <div class="msj-rta macro">                        
+              <div class="text text-r" style="background:whitesmoke !important">
+                  <input class="mytext" placeholder="Type a message"/>
+              </div> 
+
+          </div>
+          <div style="padding:10px;">
+              <span class="fa fa-mail-forward"></span>
+          </div>                
+      </div>
+  </div>  
+          
+    </body>

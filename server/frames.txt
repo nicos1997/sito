@@ -1,0 +1,40 @@
+i frames sono inviati come file json, di segui to sono inseriti i nomi dei campi il relativo valore da inserire
+client_login:
+1-	nome_utente	nome utente dell' utente che sta per loggarsi
+2-	password	password dell' utente
+
+ver_id = nome_utente
+client_logout:
+2-	ver_id		campo di server_risp_login
+
+server_risp_login:
+1-	nome_utente	nome utente dell' utente che ha provato a collegarsi
+2-	ok		l'utente ha acceduto consuccesso
+	nok		l'utente non ha inserito correttamente  i campi
+3-	ver_id		codice casuale per verificare l'utente deve essere usato in ogni messaggio e per la durata della sessione identificherà l' utente
+
+server_risp_logout:
+1-	ver_id		campo di server_risp_login
+
+Ogni tot secondi il client chiedera al server i nuovi messaggi i quali avranno un id
+
+client_mess:
+1-	ver_id		campo di server_risp_login
+2-	mess		messaggio scritto dall' utente
+
+client_mess_agg:
+1-	ver_id		campo di server_risp_login
+2-	id_mess		id ultimo messaggio ricevuto dal client
+
+server_lista_mess:
+
+{
+	ult_id=
+	tot_mess=
+
+	mess=mess1|mess2
+}
+
+0-0-0
+
+

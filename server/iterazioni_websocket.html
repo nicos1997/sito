@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+<title>Prova</title>
+<script type="text/javascript" src="../jquery.js"></script>
+    <script type="text/javascript">
+    var ws = new WebSocket("ws://192.168.1.65:8080");
+    var cont_mess=0;
+    var nome_utente;
+    var server_message;
+    
+      $(document).ready(function(){
+        $("#login").click(function(){
+          nome_utente=$("#nome_utente").val();
+            login= {
+		          "client_login" : 
+		      	{
+			      	"nome_utente": $("#nome_utente").val(),
+			      	"password": $("#password").val()
+            }
+          };
+          ws.send(JSON.stringify(login));
+          
+          
+       
+        });
+        $("#logout").click(function(){
+            logout= {
+		          "client_logout" : 
+		      	{
+			      	"nome_utente": nome_utente
+            }
+          };
+          ws.send(JSON.stringify(logout));
+        });
+        
+        // chat={
+        //      "client_mess_agg":{
+        //        "ver_id":server_message.server_risp_login.ver_id,
+        //        "id_mess":0
+        //      }
+        //     };
+        $("#invia_testo").click(function(){
+          //alert($("#nome_utente").val()+"-"+$("#testo").val());
+            mess={
+              "client_mess":{
+                "ver_id":$("#nome_utente").val(),
+                "mess":$("#testo").val()
+              }
+            };
+            //alert(JSON.stringify(mess));
+          ws.send(JSON.stringify(mess));
+        
+        });
+        ws.onmessage = function(e){
+	        server_message = JSON.parse(e.data);
+          if(server_message.server_risp_login!=null){
+          //alert("Connessione di "+server_message.server_risp_login.nome_utente+" Id:"+server_message.server_risp_login.ver_id);
+          //cookie
+          document.cookie="ver_id="+server_message.server_risp_login.ver_id+";nome_utente"+server_message.server_risp_login.nome_utente;
+          //cambia pagina da implemantare
+          //carica chat
+           chat={
+             "client_mess_agg":{
+               "ver_id":server_message.server_risp_login.ver_id,
+               "id_mess":1
+             }
+            };
+          ws.send(JSON.stringify(chat));
+          setInterval(function(){
+          //alert("cont_mess:"+cont_mess);
+          chat2={
+             "client_mess_agg":{
+               "ver_id":nome_utente,
+               "id_mess":cont_mess+1
+             }
+            };
+          
+          ws.send(JSON.stringify(chat2));
+         },500);
+          }
+          else if(server_message.server_risp_logout!=null){
+            alert(server_message.server_risp_logout.ver_id+" sei uscito");
+          }
+          else if(server_message.rifiuto!=null){
+            alert("Errore nel login");
+          }
+          else if(server_message.server_lista_mess!=null){
+            //ricevimento messaggi
+            cont=0;
+            //console.log("mess:"+server_message)
+             for(data in server_message.server_lista_mess)
+             {
+               if(server_message.server_lista_mess[data]!=null){
+               //alert("ricevuto:"+server_message.server_lista_mess[data].mess)
+               $("#chat").text(server_message.server_lista_mess[data].nome_utente+": -->"+server_message.server_lista_mess[data].mess);
+               cont_mess++;
+               cont++;
+               }
+             }
+          }
+        }
+      });
+    </script>
+</head>
+<body>
+  <input type="text" id="nome_utente" value="nicos">
+  <input type="text" id="password" value="nicos">
+  <button type="button" id="login" name="esegui">Vai!!!</button>
+  <button type="button" id="logout" name="esegui">Esci</button>
+  <hr>
+  <input type="text" id="testo" value="ciao">
+  <button type="button" id="invia_testo" name="esegui">Invia!!!</button>
+  <div id="chat">
+
+  </div>
+</body>
+</html>
