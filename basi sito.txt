@@ -1,2 +1,0 @@
-Il sito sarà fatto gestito in node.js
-al caricamento della pagina il client manderà un pacchetto
